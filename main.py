@@ -64,6 +64,8 @@ if __name__ == '__main__':
         from config.classic_control import muzero_config  # just using same config as classic_control for now
     elif args.case == 'classic_control':
         from config.classic_control import muzero_config
+    elif args.case == 'minichess':
+        from config.minichess import muzero_config
     else:
         raise Exception('Invalid --case option')
 
