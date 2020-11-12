@@ -4,6 +4,8 @@ from core.config import BaseMuZeroConfig, DiscreteSupport
 from .env_wrapper import ClassicControlWrapper
 from .model import MuZeroNet
 
+import gym_minichess
+
 
 class MinichessConfig(BaseMuZeroConfig):
     def __init__(self):
