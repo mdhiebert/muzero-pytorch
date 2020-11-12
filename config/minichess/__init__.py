@@ -1,7 +1,7 @@
 import gym
 import torch
 from core.config import BaseMuZeroConfig, DiscreteSupport
-from .env_wrapper import ClassicControlWrapper
+from .env_wrapper import MiniChessWrapper
 from .model import MuZeroNet
 
 import gym_minichess
