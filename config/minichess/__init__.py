@@ -52,7 +52,7 @@ class MinichessConfig(BaseMuZeroConfig):
         if seed is not None:
             env.seed(seed)
 
-        return MinichessConfig(env, discount=self.discount, k=4)
+        return MiniChessWrapper(env, discount=self.discount, k=4)
 
     def scalar_reward_loss(self, prediction, target):
         return -(torch.log_softmax(prediction, dim=1) * target).sum(1)
