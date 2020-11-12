@@ -20,6 +20,7 @@ class MiniChessWrapper(Game):
         return [Action(int(idx)) for idx in self.env.legal_actions()]
 
     def step(self, action):
+        # action is an int representing an action ID
         obs, reward, done, info = self.env.step(action)
 
         self.rewards.append(reward)
