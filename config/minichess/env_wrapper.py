@@ -17,7 +17,7 @@ class MiniChessWrapper(Game):
         self.frames = deque([], maxlen=k)
 
     def legal_actions(self):
-        return [Action(idx) for idx in range(self.env.legal_actions())]
+        return [Action(int(idx)) for idx in self.env.legal_actions()]
 
     def step(self, action):
         obs, reward, done, info = self.env.step(action)
