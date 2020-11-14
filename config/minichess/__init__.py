@@ -10,11 +10,11 @@ import gym_minichess
 class MinichessConfig(BaseMuZeroConfig):
     def __init__(self):
         super(MinichessConfig, self).__init__(
-            training_steps=20000,
+            training_steps=2000,
             test_interval=100,
             test_episodes=5,
             checkpoint_interval=20,
-            max_moves=500,
+            max_moves=100,
             discount=0.997,
             dirichlet_alpha=0.25,
             num_simulations=50,
@@ -28,6 +28,8 @@ class MinichessConfig(BaseMuZeroConfig):
             value_loss_coeff=1,
             value_support=DiscreteSupport(-20, 20),
             reward_support=DiscreteSupport(-5, 5))
+
+        self.device = 'cuda'
 
     def visit_softmax_temperature_fn(self, num_moves, trained_steps):
         if trained_steps < 0.5 * self.training_steps:

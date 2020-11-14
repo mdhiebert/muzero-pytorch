@@ -107,6 +107,9 @@ class SharedStorage(object):
     def set_weights(self, weights):
         return self.model.set_weights(weights)
 
+    def state_dict(self):
+        return self.model.state_dict()
+
     def incr_counter(self):
         self.step_counter += 1
 
@@ -344,5 +347,9 @@ def train(config, summary_writer=None):
     workers += [_test.remote(config, storage)]
     _train(config, storage, replay_buffer, summary_writer)
     ray.wait(workers, len(workers))
+
+    state_dict = ray.get(storage.state_dict.remote())
+
+    torch.save(state_dict, 'checkpoint')
 
     return config.get_uniform_network().set_weights(ray.get(storage.get_weights.remote()))
